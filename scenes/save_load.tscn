@@ -1,0 +1,107 @@
+[gd_scene format=3 uid="uid://dmcpel11n4g8u"]
+
+[ext_resource type="Script" uid="uid://dt83soud8sbem" path="res://script/save.gd" id="1_vsj73"]
+[ext_resource type="Theme" uid="uid://cm17dixcrtvgm" path="res://theme/starry_theme.tres" id="2_lcqm3"]
+[ext_resource type="Theme" uid="uid://b2h5wf1wepxar" path="res://theme/menu_button.tres" id="2_vfdjp"]
+[ext_resource type="Texture2D" uid="uid://2unvsg63sw67" path="res://gui/planet_icon.png" id="7_rdbvc"]
+
+[node name="SaveLoad" type="Control" unique_id=935375187]
+process_mode = 3
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 3
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -600.0
+grow_horizontal = 0
+grow_vertical = 2
+focus_mode = 2
+mouse_filter = 1
+script = ExtResource("1_vsj73")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=309181136]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=277415213]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer" unique_id=470714122]
+visible = false
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+
+[node name="label" type="RichTextLabel" parent="MarginContainer/VBoxContainer/Control" unique_id=412861042]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -39.5
+offset_right = 160.0
+offset_bottom = 39.5
+grow_horizontal = 2
+grow_vertical = 2
+accessibility_name = "Save"
+theme = ExtResource("2_vfdjp")
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "SAVE"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer" unique_id=1367782956]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("2_lcqm3")
+follow_focus = true
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/ScrollContainer" unique_id=1632432612]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer" unique_id=734167976]
+layout_mode = 2
+
+[node name="quick_slots_vbox" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1254746555]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 20
+size_flags_vertical = 3
+
+[node name="slots_vbox" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1050914810]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1451235249]
+light_mask = 16
+visibility_layer = 16
+texture_filter = 3
+position = Vector2(234, 335)
+scale = Vector2(0.2, 0.2)
+range_layer_min = 1
+range_layer_max = 100
+range_item_cull_mask = 16
+texture = ExtResource("7_rdbvc")

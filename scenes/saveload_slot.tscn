@@ -1,0 +1,233 @@
+[gd_scene format=3 uid="uid://i1j7f4gva71o"]
+
+[ext_resource type="Script" uid="uid://ctjaxea84p7cc" path="res://script/button_anim.gd" id="1_8u05y"]
+[ext_resource type="StyleBox" uid="uid://06t1p8acnhul" path="res://theme/button_focus.tres" id="1_mcill"]
+[ext_resource type="FontFile" uid="uid://copsruol437ri" path="res://fonts/poppins/Poppins-Medium.ttf" id="2_csxty"]
+[ext_resource type="FontFile" uid="uid://23w8ubmnawym" path="res://fonts/poppins/Poppins-Light.ttf" id="3_mcill"]
+[ext_resource type="FontFile" uid="uid://c624gb2jnp3fh" path="res://fonts/poppins/Poppins-Black.ttf" id="5_8n2hw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8u05y"]
+bg_color = Color(0.0142752165, 0.014275219, 0.014275211, 0.8117647)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8n2hw"]
+bg_color = Color(0.9490196, 0.96862745, 1, 0.4509804)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.9490196, 0.96862745, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j0vak"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.9490196, 0.96862745, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mcill"]
+bg_color = Color(0.288518, 0.28851798, 0.28851798, 0.62352943)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_csxty"]
+bg_color = Color(0.9490196, 0.96862745, 1, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ulbe0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_younm"]
+content_margin_left = 5.0
+content_margin_right = 5.0
+bg_color = Color(0.9490196, 0.96862745, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tq2mb"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="ButtonAnim" type="Button" unique_id=1926495592]
+light_mask = 16
+visibility_layer = 16
+custom_minimum_size = Vector2(450, 90)
+offset_right = 8.0
+offset_bottom = 8.0
+pivot_offset = Vector2(225, 45)
+mouse_filter = 1
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_8u05y")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_8n2hw")
+theme_override_styles/hover = SubResource("StyleBoxFlat_j0vak")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_mcill")
+theme_override_styles/focus = ExtResource("1_mcill")
+script = ExtResource("1_8u05y")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1215629336]
+light_mask = 16
+visibility_layer = 16
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="Control" type="Control" parent="HBoxContainer" unique_id=559079287]
+light_mask = 16
+visibility_layer = 16
+custom_minimum_size = Vector2(225, 0)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Control" unique_id=347957349]
+light_mask = 16
+visibility_layer = 16
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="slot_status" type="RichTextLabel" parent="HBoxContainer/Control/VBoxContainer" unique_id=1275969473]
+modulate = Color(1, 1, 1, 0.2784314)
+light_mask = 16
+visibility_layer = 16
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 1
+accessibility_description = "The current status of the save slot."
+theme_override_fonts/normal_font = ExtResource("2_csxty")
+theme_override_font_sizes/normal_font_size = 55
+theme_override_styles/focus = ExtResource("1_mcill")
+bbcode_enabled = true
+text = "EMPTY"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel" type="Panel" parent="HBoxContainer" unique_id=242952285]
+light_mask = 16
+visibility_layer = 16
+custom_minimum_size = Vector2(1, 0)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_csxty")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=1688085806]
+light_mask = 16
+visibility_layer = 16
+custom_minimum_size = Vector2(224, 0)
+clip_contents = true
+layout_mode = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer" unique_id=1958899316]
+light_mask = 16
+visibility_layer = 16
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/MarginContainer" unique_id=170159879]
+light_mask = 16
+visibility_layer = 16
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=599582412]
+light_mask = 16
+visibility_layer = 16
+layout_mode = 2
+mouse_filter = 2
+
+[node name="time_label" type="Label" parent="HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=534025172]
+light_mask = 16
+visibility_layer = 16
+layout_mode = 2
+focus_mode = 3
+accessibility_name = "Date"
+theme_override_font_sizes/font_size = 16
+theme_override_styles/focus = ExtResource("1_mcill")
+text = "DATE"
+
+[node name="Control" type="Control" parent="HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1242288827]
+light_mask = 16
+visibility_layer = 16
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="saved_time" type="Label" parent="HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1284820696]
+light_mask = 16
+visibility_layer = 16
+layout_mode = 2
+focus_mode = 3
+theme_override_fonts/font = ExtResource("3_mcill")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/focus = ExtResource("1_mcill")
+text = "--/--/--"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1253774688]
+light_mask = 16
+visibility_layer = 16
+layout_mode = 2
+mouse_filter = 2
+
+[node name="dialogue_label" type="Label" parent="HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1757558698]
+light_mask = 16
+visibility_layer = 16
+layout_mode = 2
+focus_mode = 3
+accessibility_name = "Label"
+theme_override_font_sizes/font_size = 16
+theme_override_styles/focus = ExtResource("1_mcill")
+text = "LABEL"
+
+[node name="Control" type="Control" parent="HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1888457664]
+light_mask = 16
+visibility_layer = 16
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="saved_dialogue" type="Label" parent="HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1514653793]
+light_mask = 16
+visibility_layer = 16
+layout_mode = 2
+focus_mode = 2
+theme_override_fonts/font = ExtResource("3_mcill")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/focus = ExtResource("1_mcill")
+text = "// "
+
+[node name="saved_progress" type="ProgressBar" parent="HBoxContainer/VBoxContainer" unique_id=1063552294]
+light_mask = 16
+visibility_layer = 16
+custom_minimum_size = Vector2(219, 21)
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_filter = 2
+step = 1.0
+show_percentage = false
+
+[node name="delete_button" type="Button" parent="." unique_id=2124456436]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+tooltip_text = "Delete the save"
+accessibility_name = "Delete"
+accessibility_description = "Deletes the save."
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 0.15686275)
+theme_override_fonts/font = ExtResource("5_8n2hw")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ulbe0")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_younm")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tq2mb")
+theme_override_styles/focus = ExtResource("1_mcill")
+text = "X"

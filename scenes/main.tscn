@@ -1,0 +1,150 @@
+[gd_scene format=3 uid="uid://c68l23fwwn5vu"]
+
+[ext_resource type="Script" uid="uid://ctjaxea84p7cc" path="res://script/button_anim.gd" id="1_0wfyh"]
+[ext_resource type="Script" uid="uid://ccwyidvx5fwnq" path="res://script/menu.gd" id="1_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://dmcpel11n4g8u" path="res://scenes/save_load.tscn" id="1_o5qli"]
+[ext_resource type="Theme" uid="uid://cm17dixcrtvgm" path="res://theme/starry_theme.tres" id="1_sugp2"]
+[ext_resource type="Script" uid="uid://3dxmqv6yochw" path="res://script/main.gd" id="1_tefeu"]
+[ext_resource type="Script" uid="uid://v7xqbd4i3oh1" path="res://script/notification_window.gd" id="5_tbgi4"]
+
+[node name="Main" type="Node" unique_id=232232886]
+script = ExtResource("1_tefeu")
+
+[node name="Menus" type="CanvasLayer" parent="." unique_id=1518292820]
+layer = 10
+
+[node name="Menu" type="Control" parent="." unique_id=346498488 node_paths=PackedStringArray("save_menu", "load_menu")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_jyhfs")
+save_menu = NodePath("../Save")
+load_menu = NodePath("../Load")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu" unique_id=1689100675]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -346.5
+offset_right = 200.0
+offset_bottom = 346.5
+grow_vertical = 2
+alignment = 1
+
+[node name="save_button" type="Button" parent="Menu/VBoxContainer" unique_id=1952360196]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 90)
+layout_mode = 2
+theme = ExtResource("1_sugp2")
+toggle_mode = true
+text = "Save"
+script = ExtResource("1_0wfyh")
+metadata/_custom_type_script = "uid://ctjaxea84p7cc"
+
+[node name="load_button" type="Button" parent="Menu/VBoxContainer" unique_id=1997866960]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 90)
+layout_mode = 2
+theme = ExtResource("1_sugp2")
+toggle_mode = true
+text = "Load"
+script = ExtResource("1_0wfyh")
+metadata/_custom_type_script = "uid://ctjaxea84p7cc"
+
+[node name="Save" type="Control" parent="." unique_id=462797272]
+unique_name_in_owner = true
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="SaveLoad" parent="Save" unique_id=935375187 node_paths=PackedStringArray("notification_win") instance=ExtResource("1_o5qli")]
+layout_mode = 1
+notification_win = NodePath("../../Notification_win")
+
+[node name="Load" type="Control" parent="." unique_id=1992264289]
+unique_name_in_owner = true
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="SaveLoad" parent="Load" unique_id=1253145767 node_paths=PackedStringArray("notification_win") instance=ExtResource("1_o5qli")]
+layout_mode = 1
+notification_win = NodePath("../../Notification_win")
+mode = 1
+
+[node name="Game" type="CanvasLayer" parent="." unique_id=630581866]
+
+[node name="Notification_win" type="Window" parent="." unique_id=1629041216]
+oversampling_override = 1.0
+initial_position = 4
+size = Vector2i(500, 236)
+wrap_controls = true
+unresizable = true
+always_on_top = true
+popup_window = true
+sharp_corners = true
+minimize_disabled = true
+maximize_disabled = true
+script = ExtResource("5_tbgi4")
+
+[node name="bg" type="Panel" parent="Notification_win" unique_id=812004622]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Notification_win" unique_id=713254782]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="Notification_win/VBoxContainer" unique_id=616746750]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+
+[node name="notification_text" type="RichTextLabel" parent="Notification_win/VBoxContainer/MarginContainer2" unique_id=817801244]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 22
+bbcode_enabled = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Notification_win/VBoxContainer" unique_id=935685127]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="buttons_hbox" type="HBoxContainer" parent="Notification_win/VBoxContainer/MarginContainer" unique_id=2065652369]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 8
+alignment = 1
+
+[connection signal="toggled" from="Menu/VBoxContainer/save_button" to="Menu" method="_on_save_bttn_toggled"]
+[connection signal="toggled" from="Menu/VBoxContainer/load_button" to="Menu" method="_on_load_bttn_toggled"]
+[connection signal="close_requested" from="Notification_win" to="Notification_win" method="_on_close_requested"]
