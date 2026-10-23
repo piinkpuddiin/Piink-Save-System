@@ -33,8 +33,8 @@ func save(save_name: String):
 	## GENERAL
 	config_file.set_value("General", "time", GlobalVar.saved_time)
 	
-	#var saved_dialogue = Dialogic.get_full_state()
-	#config_file.set_value("Dialogue", "saved_timeline", saved_dialogue)
+	var saved_dialogue = Dialogic.get_full_state()
+	config_file.set_value("Dialogue", "saved_timeline", saved_dialogue)
 	
 	# Save all the scripts values.
 	# https://www.reddit.com/r/godot/comments/kdvg8i/is_there_a_way_to_get_all_of_a_scripts_variables/
@@ -50,7 +50,6 @@ func save(save_name: String):
 	if error:
 		print("An error happened while saving data: ", error)
 	print("Succesfully saved! Save: " + save_name + ".")
-	print(save_name)
 	
 	SaveLoad.slot_saved.emit()
 
@@ -64,40 +63,30 @@ func load(save_name: String):
 		print("An error happened while loading data: ", error)
 		return
 	
+	# Load all the scripts data 1 by 1.
 	## GENERAL
 	var saved_time = config_file.get_value("General", "time", "12:00")
-	#var saved_in_main_menu = config_file.get_value("General", "in_main_menu", false)
-	
 	load_data['time'] = saved_time
 	
-	#var saved_timeline = config_file.get_value("Dialogue", "saved_timeline", {})
-	#load_data['timeline_saved'] = saved_timeline
+	var saved_timeline = config_file.get_value("Dialogue", "saved_timeline", {})
+	load_data['timeline_saved'] = saved_timeline
 	
-	#print("The configfile keys:")
-	#if config_file.has_section("GlobalVar"):
-	#	for i in config_file.get_section_keys("GlobalVar"):
-	#		load_data[i] = config_file.get_value("GlobalVar", i, GlobalVar.get(i))
-	#		print(" ",i)
-	
+	# Load all the scripts data.
 	for i in config_file.get_sections():
 		for x in config_file.get_section_keys(i):
 			print("The section ",i, ". The key: ",x,".")
 			load_data[x] = config_file.get_value(i, x)
 	
 	print("The load data: ", load_data)
-	
 	return load_data
 
+#region QUICK SAVE
 ## Save a quick save.
 func quick_save():
-	#if SaveLoad.quick_save_slot >= SaveLoad.quick_save_amount:
-	#	SaveLoad.quick_save_slot = 0
-	#SaveLoad.quick_save_slot += 1
-	
 	SaveLoad.quick_saved.emit("quick")
 	SaveLoad.save("quick")
 
-## Load the most recent save.
+## Load the most recent save. Useful for a continue button on the main menu.
 func quick_load():
 	if !saves_exists():
 		return
@@ -123,8 +112,9 @@ func quick_load():
 	print("Most recent save: ", most_recent)
 	
 	SaveLoad.load(most_recent)
+#endregion
 
-
+#region HELPER functions
 ## Check if the folder has any saves.
 func saves_exists():
 	var dir
@@ -154,3 +144,4 @@ func delete_all():
 	for i in dir.get_files():
 		dir.remove(SAVE_PATH + i)
 	print("Successfully deleted all saves.")
+#endregion
