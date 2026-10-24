@@ -22,18 +22,18 @@ func generate_options() -> void:
 
 
 func _on_class_options_item_selected(index: int) -> void:
-	print("Old strength: ", GlobalVar.character_class)
+	print_rich("[b]Old[/b] strength: ", GlobalVar.character_class)
 	GlobalVar.character_class = GlobalVar.playable_classes.keys()[index]
-	print("New strength: ", GlobalVar.character_class)
+	print_rich("[b]New[/b] strength: ", GlobalVar.character_class)
 
 
 func _on_strength_spin_box_value_changed(value: float) -> void:
-	print("Old strength: ", GlobalVar.character_strength)
+	print_rich("[b]Old[/b] strength: ", GlobalVar.character_strength)
 	GlobalVar.character_strength = int(value)
-	print("New strength: ", GlobalVar.character_strength)
+	print_rich("[b]New[/b] strength: ", GlobalVar.character_strength)
 
 
 func _on_wisdom_spin_box_value_changed(value: float) -> void:
-	print("Old wisdom: ", GlobalVar.character_wisdom)
+	print_rich("[b]Old[/b] wisdom: ", GlobalVar.character_wisdom)
 	GlobalVar.character_wisdom = int(value)
-	print("New wisdom: ", GlobalVar.character_wisdom)
+	print_rich("[b]New[/b] wisdom: ", GlobalVar.character_wisdom)

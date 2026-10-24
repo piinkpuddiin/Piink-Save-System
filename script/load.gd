@@ -78,7 +78,7 @@ func check_buttons(_save: String=""):
 
 
 
-## Generates all the saved slots with the theme.
+## Generates all the saved slots.
 func generate_slots():
 	for i in range(1,16,1):
 		var bttn = preload("res://scenes/saveload_slot.tscn").instantiate()
@@ -101,7 +101,8 @@ func generate_slots():
 func load_slot(slot = ""):
 	SaveLoad.load(slot)
 	SaveLoad.slot_loaded.emit(slot)
-	print("Successfully loaded! Loaded: " + slot + ".")
+	print("Goobie")
+	#print("Successfully loaded! Loaded: " + slot + ".")
 
 func _on_back_bttn_pressed() -> void:
 	main.hide_menu(self)

@@ -1,7 +1,7 @@
 extends Node
 
 ## Emits every time a slot is loaded
-signal save_loaded
+signal slot_loaded
 ## Emits every time a slot is saved
 signal slot_saved
 ## Emits every time a quick save slot is saved.
@@ -74,10 +74,10 @@ func load(save_name: String):
 	# Load all the scripts data.
 	for i in config_file.get_sections():
 		for x in config_file.get_section_keys(i):
-			print("The section ",i, ". The key: ",x,".")
+			#print("The section ",i, ". The key: ",x,".")
 			load_data[x] = config_file.get_value(i, x)
 	
-	print("The load data: ", load_data)
+	#print("The load data: ", load_data)
 	return load_data
 
 #region QUICK SAVE
@@ -102,14 +102,13 @@ func quick_load():
 		file_time = FileAccess.get_modified_time(SAVE_PATH + str(i))
 		# Add the saves to the dict, makes sure to give them their number
 		recent_files[i] = file_time 
-	
-	print("Recent files: ", recent_files)
+	#print("Recent files: ", recent_files)
 	
 	# Look for the highest value in the dict
 	var most_recent_value = recent_files.values().max()
 	# Look for the values, dict key and assign it to most recent
 	most_recent = str(recent_files.find_key(most_recent_value)).trim_suffix("_save.ini")
-	print("Most recent save: ", most_recent)
+	#print("Most recent save: ", most_recent)
 	
 	SaveLoad.load(most_recent)
 #endregion

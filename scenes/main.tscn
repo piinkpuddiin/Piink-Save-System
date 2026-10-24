@@ -10,13 +10,7 @@
 [ext_resource type="Script" uid="uid://v7xqbd4i3oh1" path="res://script/notification_window.gd" id="5_tbgi4"]
 [ext_resource type="Script" uid="uid://cjmmhbp1b5312" path="res://addons/StyleboxFancy/StyleBorder.gd" id="6_gqmmt"]
 [ext_resource type="Script" uid="uid://bkl6g25jwb47h" path="res://addons/StyleboxFancy/StyleBoxFancy.gd" id="7_yc10j"]
-[ext_resource type="Texture2D" uid="uid://cqwnrfqo6mmcv" path="res://gui/radio/checked_star.png" id="8_jscy8"]
-[ext_resource type="Texture2D" uid="uid://cnx2abofd1c0t" path="res://gui/radio/unchecked_star.png" id="9_pm3ni"]
-[ext_resource type="Texture2D" uid="uid://ch8aitav11bsq" path="res://gui/small_star_1.png" id="10_y6deb"]
 [ext_resource type="FontFile" uid="uid://copsruol437ri" path="res://fonts/poppins/Poppins-Medium.ttf" id="11_og1vs"]
-[ext_resource type="Texture2D" uid="uid://ct8mptf6mi5by" path="res://gui/icons/arrow_down.png" id="12_2wyq8"]
-[ext_resource type="Texture2D" uid="uid://bks6a5gtne1ar" path="res://gui/radio/radio_checked.png" id="13_vxglm"]
-[ext_resource type="Texture2D" uid="uid://6i2aakcrgr3p" path="res://gui/radio/radio_unchecked.png" id="14_2f3dj"]
 [ext_resource type="FontFile" uid="uid://ctw0tgru2o1a8" path="res://fonts/poppins/Poppins-ExtraLightItalic.ttf" id="15_yq6so"]
 [ext_resource type="StyleBox" uid="uid://06t1p8acnhul" path="res://theme/button_focus.tres" id="16_fv21b"]
 
@@ -335,8 +329,8 @@ CheckButton/colors/font_outline_color = Color(0.9490196, 0.96862745, 1, 1)
 CheckButton/colors/font_pressed_color = Color(0.9490196, 0.96862745, 1, 1)
 CheckButton/colors/icon_disabled_color = Color(0.2665752, 0.26657522, 0.26657513, 1)
 CheckButton/font_sizes/font_size = 28
-CheckButton/icons/checked = ExtResource("8_jscy8")
-CheckButton/icons/unchecked = ExtResource("9_pm3ni")
+CheckButton/icons/checked = null
+CheckButton/icons/unchecked = null
 CheckButton/styles/disabled = SubResource("StyleBoxFlat_pm3ni")
 CheckButton/styles/focus = SubResource("StyleBoxFlat_y6deb")
 CheckButton/styles/hover = SubResource("StyleBoxFlat_og1vs")
@@ -351,9 +345,9 @@ HScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_tel4y")
 HScrollBar/styles/scroll = SubResource("StyleBoxLine_qkpxi")
 HScrollBar/styles/scroll_focus = SubResource("StyleBoxFlat_5q0nq")
 HSlider/constants/center_grabber = 10
-HSlider/icons/grabber = ExtResource("10_y6deb")
+HSlider/icons/grabber = null
 HSlider/icons/grabber_disabled = SubResource("PlaceholderTexture2D_dgi5k")
-HSlider/icons/grabber_highlight = ExtResource("10_y6deb")
+HSlider/icons/grabber_highlight = null
 HSlider/icons/tick = null
 HSlider/styles/grabber_area = SubResource("StyleBoxFlat_j8jky")
 HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_kmb1v")
@@ -367,7 +361,7 @@ OptionButton/constants/line_spacing = 8
 OptionButton/constants/modulate_arrow = 1
 OptionButton/font_sizes/font_size = 24
 OptionButton/fonts/font = ExtResource("11_og1vs")
-OptionButton/icons/arrow = ExtResource("12_2wyq8")
+OptionButton/icons/arrow = null
 OptionButton/styles/focus = SubResource("StyleBoxFlat_pibwh")
 OptionButton/styles/hover = SubResource("StyleBoxFlat_c6pm6")
 OptionButton/styles/normal = SubResource("StyleBoxFlat_5he1u")
@@ -376,8 +370,8 @@ Panel/styles/panel = SubResource("StyleBoxFlat_2cjbq")
 PopupMenu/colors/font_hover_color = Color(0, 0, 0, 1)
 PopupMenu/font_sizes/font_size = 16
 PopupMenu/font_sizes/title_font_size = 16
-PopupMenu/icons/radio_checked = ExtResource("13_vxglm")
-PopupMenu/icons/radio_unchecked = ExtResource("14_2f3dj")
+PopupMenu/icons/radio_checked = null
+PopupMenu/icons/radio_unchecked = null
 PopupMenu/styles/hover = SubResource("StyleBoxFlat_chjal")
 PopupMenu/styles/panel = SubResource("StyleBoxFlat_cjqg0")
 PopupPanel/font_sizes/title_font_size = 16

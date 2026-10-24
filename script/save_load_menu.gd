@@ -208,7 +208,7 @@ func check_loads(node, empty_text = "EMPTY"):
 
 func load_slot(slot = ""):
 	SaveLoad.load(slot)
-	SaveLoad.save_loaded.emit(slot)
+	SaveLoad.slot_loaded.emit(slot)
 
 
 func _on_save_button_toggled(toggled_on: bool) -> void:
