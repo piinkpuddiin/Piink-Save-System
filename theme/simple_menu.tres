@@ -23,6 +23,33 @@ content_margin_top = 5.0
 content_margin_right = 5.0
 content_margin_bottom = 5.0
 
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_yoc3v"]
+color = Color(1, 1, 1, 1)
+thickness = 7
+vertical = true
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_npo5l"]
+color = Color(1, 0.33682507, 0.6691439, 1)
+thickness = 7
+vertical = true
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_ah8g4"]
+color = Color(1, 0.67058825, 0.8784314, 1)
+thickness = 7
+vertical = true
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_et61b"]
+thickness = 7
+vertical = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ipke5"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+
 [resource]
 Button/colors/font_color = Color(0.9490196, 0.96862745, 1, 1)
 Button/colors/font_focus_color = Color(0.9490196, 0.96862745, 1, 1)
@@ -36,3 +63,8 @@ Button/styles/normal = SubResource("StyleBoxEmpty_tj8a1")
 Button/styles/pressed = SubResource("StyleBoxFlat_nye7j")
 RichTextLabel/font_sizes/normal_font_size = 38
 RichTextLabel/styles/normal = SubResource("StyleBoxEmpty_flw38")
+VScrollBar/styles/grabber = SubResource("StyleBoxLine_yoc3v")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxLine_npo5l")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxLine_ah8g4")
+VScrollBar/styles/scroll = SubResource("StyleBoxLine_et61b")
+VScrollBar/styles/scroll_focus = SubResource("StyleBoxFlat_ipke5")

@@ -1,0 +1,88 @@
+[gd_scene format=3 uid="uid://balq6vmi7g5ey"]
+
+[ext_resource type="Script" uid="uid://bhlsc4q2oeda5" path="res://script/test.gd" id="1_errlg"]
+
+[node name="Test" type="Control" unique_id=531363564 node_paths=PackedStringArray("class_options", "strength_spin_box", "wisdom_spin_box")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_errlg")
+class_options = NodePath("VBoxContainer/HBoxContainer2/class_options")
+strength_spin_box = NodePath("VBoxContainer/HBoxContainer2/strength_spin_box")
+wisdom_spin_box = NodePath("VBoxContainer/HBoxContainer2/wisdom_spin_box")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1540956751]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -304.0
+offset_top = -31.5
+offset_right = 304.0
+offset_bottom = 31.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=2130862467]
+layout_mode = 2
+
+[node name="character_class_label" type="RichTextLabel" parent="VBoxContainer/HBoxContainer" unique_id=1608352517]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Class"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="character_strength_label" type="RichTextLabel" parent="VBoxContainer/HBoxContainer" unique_id=635744734]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Strength"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="character_wisdom_label" type="RichTextLabel" parent="VBoxContainer/HBoxContainer" unique_id=1567536509]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+text = "Wisdom"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer" unique_id=1348068494]
+layout_mode = 2
+
+[node name="class_options" type="OptionButton" parent="VBoxContainer/HBoxContainer2" unique_id=1156878166]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="strength_spin_box" type="SpinBox" parent="VBoxContainer/HBoxContainer2" unique_id=1279731601]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 20.0
+value = 15.0
+alignment = 1
+
+[node name="wisdom_spin_box" type="SpinBox" parent="VBoxContainer/HBoxContainer2" unique_id=359227262]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 20.0
+value = 9.0
+alignment = 1
+
+[connection signal="item_selected" from="VBoxContainer/HBoxContainer2/class_options" to="." method="_on_class_options_item_selected"]
+[connection signal="value_changed" from="VBoxContainer/HBoxContainer2/strength_spin_box" to="." method="_on_strength_spin_box_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/HBoxContainer2/wisdom_spin_box" to="." method="_on_wisdom_spin_box_value_changed"]

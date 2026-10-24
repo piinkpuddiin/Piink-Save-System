@@ -18,7 +18,7 @@ border_width_bottom = 5
 border_color = Color(0.9490196, 0.96862745, 1, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j0vak"]
-bg_color = Color(0, 0, 0, 1)
+bg_color = Color(0, 0, 0, 0)
 border_width_left = 5
 border_width_top = 5
 border_width_right = 5
@@ -41,7 +41,7 @@ bg_color = Color(0.9490196, 0.96862745, 1, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tq2mb"]
 bg_color = Color(1, 1, 1, 1)
 
-[node name="ButtonAnim" type="Button" unique_id=1926495592]
+[node name="SaveLoad_Slot" type="Button" unique_id=1926495592]
 light_mask = 16
 visibility_layer = 16
 custom_minimum_size = Vector2(450, 90)

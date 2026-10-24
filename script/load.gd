@@ -100,7 +100,7 @@ func generate_slots():
 
 func load_slot(slot = ""):
 	SaveLoad.load(slot)
-	SaveLoad.save_loaded.emit(slot)
+	SaveLoad.slot_loaded.emit(slot)
 	print("Successfully loaded! Loaded: " + slot + ".")
 
 func _on_back_bttn_pressed() -> void:

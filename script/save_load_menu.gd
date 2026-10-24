@@ -15,13 +15,14 @@ enum MODE{SAVE, LOAD}
 func _ready() -> void:
 	generate_slots()
 	check_buttons()
+	self.visibility_changed.connect(grab_focus)
 	# Checks every time a slot_saved is emitted.
 	SaveLoad.slot_saved.connect(check_buttons)
 
 
 func _input(event: InputEvent) -> void:
 	for i in %slots_vbox.get_children():
-		# Only delete if we are mousing over and press delete.
+		# Only delete if we are mousing over and pressing delete.
 		if event.is_action_pressed("delete") and i.is_hovered():
 			if SaveLoad.save_slot_exists(str(i.get_meta("save_slot"))):
 				notification_win.pop_in(
@@ -46,29 +47,6 @@ func generate_slots():
 	%quick_slots_vbox.add_child(quick_button)
 	%quick_slots_vbox.move_child(quick_button, 0)
 
-
-## Generate quick slots if they exist.
-#func generate_quick_slot():
-#	var quick_slots_arr:= DirAccess.get_files_at(SaveLoad.SAVE_PATH)
-#	
-#	for i in quick_slots_arr:
-#		if !i.ends_with("_quick_save.ini"):
-#			continue
-#		print("generate: ",i)
-#		var button = preload("res://scenes/saveload_quick_slot.tscn").instantiate()
-#		button.add_to_group("save_button")
-#		button.set_meta("save_slot", i.trim_suffix("_save.ini"))
-#		
-#		%quick_slots_vbox.add_child(button)
-
-## Create a quick slot button
-#func create_quick_slot(quick_slot: String):
-#	var button = preload("res://scenes/saveload_quick_slot.tscn").instantiate()
-#	button.add_to_group("save_button")
-#	button.set_meta("save_slot", quick_slot)
-#	
-#	%quick_slots_vbox.add_child(button)
-#	%quick_slots_vbox.move_child(button, 0)
 
 ## Emitted every time when a button gets saved or deleted.
 func check_buttons(_save: String=""):
@@ -121,7 +99,7 @@ func check_saves(node, empty_text = "EMPTY"):
 	stylebox_normal.bg_color = Color("040404cf")
 	var progress_bar_normal = StyleBoxFlat.new()
 	progress_bar_normal.bg_color = Color("000000ff")
-	#node.add_theme_stylebox_override("normal", stylebox_normal)
+	node.add_theme_stylebox_override("normal", stylebox_normal)
 	node.find_child("saved_progress").add_theme_stylebox_override("background", progress_bar_normal)
 	
 	node.find_child("delete_button").disabled = false
@@ -141,15 +119,19 @@ func check_saves(node, empty_text = "EMPTY"):
 				"Overwriting Save")
 		)
 		node.find_child("slot_status").modulate = filled_slot
+		node.find_child("time_label").modulate = filled_slot
 		node.find_child("saved_time").modulate = filled_slot
+		node.find_child("dialogue_label").modulate = filled_slot
+		node.find_child("saved_dialogue").modulate = filled_slot
 		node.find_child("slot_status").text = "[u]SAVED"
 		node.find_child("slot_status").accessibility_name = "Saved"
 		node.find_child("saved_time").text = SaveLoad.load(str(node.get_meta("save_slot"))).get('time')
 	#node.find_child("saved_dialogue").text = SaveLoad.load(str(node.get_meta("save_slot"))).get('dialogue_label')
 	#node.find_child("saved_progress").value = SaveLoad.load(str(node.get_meta("save_slot"))).get('story_progress')
 	
+	# The empty saveable slots.
 	if !SaveLoad.save_slot_exists(str(node.get_meta("save_slot"))):
-		# Makes a new save.
+		# Make a new save.
 		node.pressed.connect(
 			SaveLoad.save.bind(str(node.get_meta("save_slot")))
 			)
@@ -158,7 +140,10 @@ func check_saves(node, empty_text = "EMPTY"):
 		
 		node.find_child("slot_status").text = empty_text
 		node.find_child("slot_status").modulate = empty_slot
+		node.find_child("time_label").modulate = empty_slot
 		node.find_child("saved_time").modulate = empty_slot
+		node.find_child("dialogue_label").modulate = empty_slot
+		node.find_child("saved_dialogue").modulate = empty_slot
 		node.find_child("saved_time").text = "--/--/--"
 		
 		stylebox_normal.bg_color = Color(0.094, 0.094, 0.094, 0.506)
@@ -181,7 +166,7 @@ func check_loads(node, empty_text = "EMPTY"):
 		
 		var stylebox_normal = StyleBoxFlat.new()
 		stylebox_normal.bg_color = Color(0.0, 0.0, 0.0, 1.0)
-		#node.find_child("saved_progress").add_theme_stylebox_override("background", stylebox_normal)
+		node.find_child("saved_progress").add_theme_stylebox_override("background", stylebox_normal)
 		
 		node.find_child("delete_button").disabled = false
 		node.find_child("delete_button").pressed.connect(
@@ -195,7 +180,7 @@ func check_loads(node, empty_text = "EMPTY"):
 		node.pressed.connect(
 				notification_win.pop_in.bind(
 						[load_slot.bind(str(node.get_meta("save_slot")))],
-						"Unsaved progress will be lost. Do you wish to proceed?",
+						"Unsaved progress will be lost. Do you wish to load this save?",
 						"Unsaved Progress"),
 				CONNECT_REFERENCE_COUNTED
 		)
@@ -218,9 +203,22 @@ func check_loads(node, empty_text = "EMPTY"):
 		
 		var stylebox_normal = StyleBoxFlat.new()
 		stylebox_normal.bg_color = Color(0.094, 0.094, 0.094, 0.506)
-		#node.find_child("saved_progress").add_theme_stylebox_override("background", stylebox_normal)
+		node.find_child("saved_progress").add_theme_stylebox_override("background", stylebox_normal)
 
 
 func load_slot(slot = ""):
 	SaveLoad.load(slot)
 	SaveLoad.save_loaded.emit(slot)
+
+
+func _on_save_button_toggled(toggled_on: bool) -> void:
+	if %Save.visible:
+		%Save.visible = false
+		%save_bttn.button_pressed = false
+	%Load.visible = toggled_on
+
+func _on_load_button_toggled(toggled_on: bool) -> void:
+	if %Load.visible:
+		%Load.visible = false
+		%load_bttn.button_pressed = false
+	%Save.visible = toggled_on
